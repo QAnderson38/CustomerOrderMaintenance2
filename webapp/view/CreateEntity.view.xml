@@ -1,0 +1,72 @@
+<mvc:View controllerName="com.sap.demo.customer.order.maintain.controller.CreateEntity" xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" title="{viewModel>/viewTitle}" busy="{viewModel>/busy}">
+		<semantic:content>
+			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024"
+				title="{= ${viewModel>/mode} === 'edit'? 'Edit GWSAMPLE_BASIC.BusinessPartner': 'New GWSAMPLE_BASIC.BusinessPartner'}">
+				<f:content>
+					<Label text="City" required="true"/>
+					<Input name="Address/City" id="Address_City_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'Address/City', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:40, nullable:false } }"/>
+					<Label text="Postal Code" required="true"/>
+					<Input name="Address/PostalCode" id="Address_PostalCode_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
+						visible="true" value="{ path: 'Address/PostalCode', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10, nullable:false } }"/>
+					<Label text="Street" required="true"/>
+					<Input name="Address/Street" id="Address_Street_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
+						visible="true" value="{ path: 'Address/Street', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:60, nullable:false } }"/>
+					<Label text="Building" required="true"/>
+					<Input name="Address/Building" id="Address_Building_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
+						visible="true" value="{ path: 'Address/Building', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10, nullable:false } }"/>
+					<Label text="Country" required="true"/>
+					<Input name="Address/Country" id="Address_Country_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
+						visible="true" value="{ path: 'Address/Country', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:3, nullable:false } }"/>
+					<Label text="Address Type" required="true"/>
+					<Input name="Address/AddressType" id="Address_AddressType_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
+						visible="true" value="{ path: 'Address/AddressType', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:2, nullable:false } }"/>
+					<Label text="Business Partner ID" required="true"/>
+					<Input name="BusinessPartnerID" id="BusinessPartnerID_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'BusinessPartnerID', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10, nullable:false } }"/>
+					<Label text="Company" required="true"/>
+					<Input name="CompanyName" id="CompanyName_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'CompanyName', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:80, nullable:false } }"/>
+					<Label text="Web Address" required="false"/>
+					<Input name="WebAddress" id="WebAddress_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'WebAddress', type: 'sap.ui.model.odata.type.String' }"/>
+					<Label text="E-Mail" required="true"/>
+					<Input name="EmailAddress" id="EmailAddress_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'EmailAddress', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:255, nullable:false } }"/>
+					<Label text="Phone No." required="false"/>
+					<Input name="PhoneNumber" id="PhoneNumber_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'PhoneNumber', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30 } }"/>
+					<Label text="Fax Number" required="false"/>
+					<Input name="FaxNumber" id="FaxNumber_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'FaxNumber', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:30 } }"/>
+					<Label text="Legal Form" required="false"/>
+					<Input name="LegalForm" id="LegalForm_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'LegalForm', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:10 } }"/>
+					<Label text="Currency Code" required="true"/>
+					<Input name="CurrencyCode" id="CurrencyCode_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'CurrencyCode', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:5, nullable:false } }"/>
+					<Label text="Bus. Part. Role" required="true"/>
+					<Input name="BusinessPartnerRole" id="BusinessPartnerRole_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
+						visible="true" value="{ path: 'BusinessPartnerRole', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:3, nullable:false } }"/>
+					<Label text="Time Stamp" required="false"/>
+					<DatePicker name="CreatedAt" value="{ path: 'CreatedAt', type: 'sap.ui.model.type.DateTime'}" id="CreatedAt_id" type="DateTime"
+						enabled="false" visible="true"/>
+					<Label text="Time Stamp" required="false"/>
+					<DatePicker name="ChangedAt" value="{ path: 'ChangedAt', type: 'sap.ui.model.type.DateTime'}" id="ChangedAt_id" type="DateTime"
+						enabled="false" visible="true"/>
+				</f:content>
+			</f:SimpleForm>
+		</semantic:content>
+		<semantic:saveAction>
+			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave"/>
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction id="cancel" press="onCancel"></semantic:CancelAction>
+		</semantic:cancelAction>
+	</semantic:DetailPage>
+</mvc:View>
